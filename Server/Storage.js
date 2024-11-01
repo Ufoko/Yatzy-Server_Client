@@ -18,6 +18,14 @@ export function saveGame(game) {
 }
 
 /**
+ * Function to get all stored games
+ * @returns json file with all games
+ */
+export function loadGames(){
+  return loadJSON();
+}
+
+/**
  * Private function, only to be called from inside Storage
  * Saves the data in a json file
  * @param {*} data data to be saved in json
@@ -28,11 +36,12 @@ function saveJSON(data) {
 
 
   /**
+   * Private function, only to be called from inside Storage
    * Loads the savegames.
    * It makes sure it's in an array type
    * @returns the savegames
    */
-export function loadJSON() {
+function loadJSON() {
     try {
     let fileContent = fs.readFileSync(savePath, 'utf8');
     let data = fileContent ? JSON.parse(fileContent) : []; //If filecontent is empty, initialze as [], otherwise use the parse
