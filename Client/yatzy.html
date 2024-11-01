@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <link rel="icon" type="image/x-icon" href="img\die.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="yatzy.css">
+    <script src="yatzyGUI.js" async defer type="module"></script>
+</head>
+
+<body>
+    <h1>Velkommen til yatzy!</h1>
+
+    <div id="outer" class="flex-grid">
+
+        <div id="left" class="flex-grid">
+            <div id="turn" class="col">
+                <h2 id="turn-indicator">Turn </h2>
+                <!-- Vi laver en flex grid til at holde vores 5 terninger. Hver terning består af en knap med et billede i -->
+                <div id="dice" class="flex-grid">
+                    <button class="die-button-not-clicked">
+                        <img id="die0" class="die" src="img\dice-1.svg" alt="dice1">
+                    </button>
+                    <button class="die-button-not-clicked">
+                        <img id="die1" class="die" src="img\dice-2.svg" alt="dice2">
+                    </button>
+                    <button class="die-button-not-clicked">
+                        <img id="die2" class="die" src="img\dice-3.svg" alt="dice3">
+                    </button>
+                    <button class="die-button-not-clicked">
+                        <img id="die3" class="die" src="img\dice-4.svg" alt="dice4">
+                    </button>
+                    <button class="die-button-not-clicked">
+                        <img id="die4" class="die" src="img\dice-5.svg" alt="dice5">
+                    </button>
+                </div>
+
+                <div id="roll-div">
+                    Antal rul tilbage: <span id="rolls-left"> </span>
+                    <button id="roll" class="action-button"> Roll Again </button>
+                </div>
+
+            </div>
+            <!--  -->
+            <div id="result" class="col">
+                Result: <span id="total"></span> 
+                <button id="next-round" class="action-button">Ny runde</button>
+            </div>
+        </div>
+
+
+        <div id="combinations" class="col"> </div>
+
+    </div>
+
+</body>
+
+</html>
