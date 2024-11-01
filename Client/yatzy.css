@@ -1,0 +1,171 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  line-height: 1.75em;
+  font-size: 16px;
+  background-color: #222;
+  color: #aaa;
+  margin: 20px;
+  height: 100%;
+  overflow: hidden;
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 70px;
+  text-shadow: 10px 10px 20px #000000;
+}
+
+#turn-indicator {
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+
+#combinations,
+#left {
+  height: 75vh;
+  font-size: 2vh;
+}
+
+#combinations {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+#turn {
+  text-align: center;
+  min-height: 50%;
+  margin-bottom: 20px;
+}
+
+#result {
+  padding: 50px;
+  min-height: 40%;
+  font-size: 70px;
+}
+
+#result>* {
+  margin: 30px;
+}
+
+#total {
+  color: rgb(0, 175, 0)
+}
+
+#next-round {
+  position: absolute;
+  font-size: 30px;
+  padding: 25px 30px;
+  margin-top: 0;
+}
+
+#outer {
+  flex-direction: row;
+  background-color: #292929;
+  border-radius: 40px;
+  box-shadow: #aaa;
+  box-shadow: inset 2px 3px 5px #000000, 0px 1px 1px #333;
+}
+
+.flex-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  font-size: 56px;
+  padding: 30px;
+  text-align: left;
+}
+
+img {
+  filter: invert(0.8);
+  width: 4vw
+}
+
+.die:hover {
+  filter: invert(0.65);
+}
+
+.die-clicked {
+  filter: invert(40%) sepia(98%) saturate(7056%) hue-rotate(349deg) brightness(85%) contrast(118%);
+}
+
+.col {
+  box-sizing: border-box;
+  width: 80%;
+  border-radius: 20px;
+  flex: 1;
+  background: transparent;
+  border: 1px rgb(117, 117, 117);
+  border-style: solid;
+  width: 50vw;
+  padding-left: 20px;
+  padding-top: 20px;
+  box-shadow: 10px 10px 50px #000000;
+}
+
+#dice {
+  flex-direction: row;
+}
+
+.action-button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 13px 23px;
+  border: 1px solid #222222;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: #fff;
+  color: #222222;
+  margin-left: 20px;
+}
+
+.action-button:hover {
+  border-color: #000000;
+  background: #d7d7d7;
+}
+
+#roll:disabled {
+  background: #363636;
+}
+
+.die-button-not-clicked,
+.die-button-clicked {
+  max-width: 100px;
+  max-width: 100px;
+  margin: 0.4vw;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+}
+
+#roll-div {
+  text-align: right;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+
+.result-button {
+  height: 4vh;
+  width: 10vb;
+}
+
+.result-button-clicked {
+  height: 4vh;
+  width: 10vb;
+  background-color: rgb(169, 255, 205);
+}
