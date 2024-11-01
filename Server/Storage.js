@@ -5,7 +5,7 @@ let savePath = process.cwd() + "/Yatzy-Server_Client/Server/SaveFiles/Games.json
  * Reads the old file, appends the new game the json array, then resaves the file
  * @param {*} game The game to be saved
  */
-function saveGame(game) {
+export function saveGame(game) {
    
     let jsonData = loadJSON(); 
 
