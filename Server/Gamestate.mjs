@@ -16,7 +16,7 @@ class gameState {
         //Resultlisten
         this.results = {};
         for (let eyes = 1; index <= 6; index++) {
-            results[eyes] = new resultLine(index + "'ere", upperSectionScore(eyes));
+            results[eyes] = new resultLine(index + "-s", upperSectionScore(eyes));
         }
         results['onePair'] = new resultLine('onePair', onePairScore(this.dice));
         results['twoPair'] = new resultLine('twoPair', twoPairScore(this.dice));
@@ -43,7 +43,7 @@ class gameState {
      */
     gameState() {
         let totalScore = 0;
-        for (const resultLine of this.results) {
+        for (const resultLine of this.results.filter(resultLine = !resultLine.used)) {
             resultLine.score = resultLine.calculater();
             totalScore += resultLine.score;
         }
@@ -62,6 +62,10 @@ class gameState {
 
     diceHoldChange(index) {
         this.dice[index].hold = !this.dice[index].hold
+    }
+
+    choosePoint(name) {
+        this.results[name].used = true;
     }
 }
 
