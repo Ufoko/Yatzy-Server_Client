@@ -13,13 +13,20 @@ roundButton.onclick = () => newTurn()
 
 const combinationDiv = document.getElementById('combinations')
 
-
-/* En liste over alle mulige point felter (Ud over bonus og Result) */
-let options = [
-"1-s", "2-s", "3-s", "4-s", "5-s", "6-s", "One Pair", "Two Pairs",
-    "Three Same", "Four Same", "Full House",
-    "Small Staight", "Large Straight", "Chance", "Yatzy"
-]
+let nameIndex = new Map();
+let index;
+for (index = 1; index <= 6; index++) {
+    nameIndex.set(index, index + '-s');
+}
+nameIndex.set(index++, 'onePair')
+nameIndex.set(index++, 'twoPair')
+nameIndex.set(index++, 'threeOfAKinde')
+nameIndex.set(index++, 'fourOfAkind')
+nameIndex.set(index++, 'fullHouseScore')
+nameIndex.set(index++, 'smallStraightScore')
+nameIndex.set(index++, 'largeStraightScore')
+nameIndex.set(index++, 'chanceScore')
+nameIndex.set(index++, 'yatzyScore')
 
 startGame()
 
@@ -29,7 +36,7 @@ Start game tegner de nødvendige HTML elementer med de ønskedede funktioner,
 kalder startUp() på gamestate, så den kan initialisere sin results[],
 og createDice(), så nye terninger oprettes
 */
-function startGame () {
+function startGame() {
     drawCombinations()
     createDice()
     setOnClick()
@@ -62,41 +69,34 @@ function rollTheDice() {
     updateCount() /* Opdatere*/
 }
 
-
-async function drawCombinations() {
+function drawCombinations() {
     combinationDiv.innerHTML = "";
     /* Løber alle "options" igennem, for at oprette alle resultat felter og tekster */
-    for (let index = 0; index < options.length; index++) {
+    for (let index = 1; index < nameIndex.keys.length + 1; index++) {
         /* Tilføjer teksten*/
-        combinationDiv.innerHTML = combinationDiv.innerHTML + options[index];
+        combinationDiv.innerHTML = combinationDiv.innerHTML + nameIndex[index];
 
         /* Tilføjer knappen med scoren i*/
         combinationDiv.innerHTML = combinationDiv.innerHTML + '<button id="button' + index + '" class="result-button"></button>'
 
         /* Tilføjer to tomme paragrafer eller summen/bonus. */
-        if (index == 4) {
+        if (index == 5) {
             combinationDiv.innerHTML = combinationDiv.innerHTML + 'Sum <button id="buttonSum" class="result-button"></button>'
-        } else if (index == 5) {
+        } else if (index == 6) {
             combinationDiv.innerHTML = combinationDiv.innerHTML + 'Bonus <button id="buttonBonus" class="result-button"></button>'
         } else {
             combinationDiv.innerHTML = combinationDiv.innerHTML + "<p>" + "<p>"
         }
     }
+}
 
+async function assignOnClick(resultList) {
     /* Giver dem alle sammen en onclick funktion */
-    for (let i = 0; i < options.length; i++) {
-        let resultButton = document.querySelector('#button' + i);
+    for (let index = 1; index < nameIndex.keys.length + 1; index++) {
+        let resultButton = document.querySelector('#button' + index);
         resultButton.onclick = async function () {
             postChoosePoint(i)
-            
-            let gamestate = await getGamestate()
-            setTurn(gamestate.turnNr)
-            setT
-            
-            let succeed = assignResult(i);
-            if (succeed) {
-                resultButton.className = "result-button-clicked";
-            }
+            await updateGamestate()      
         }
     }
 }
@@ -106,30 +106,17 @@ function setTurn(turnNr) {
 }
 
 
-/* 
-Kaldes hver gang en ny tur begynder.
-Holder også øje med om vi er er færdige med hele spillet, og viser så et tilsvarende vindue
-*/
-function newTurn() {
-    if (allTaken()) {
-        let text = "Du opnåede en score på " + totalScore() + "\n Vil du starte et ny spil?";
-        if (confirm(text)) {
-            startGame();
-          }
-    } else if (takenThisRound()) {
+async function updateGamestate() {
+    let gamestate = await getGamestate();
+    setTurn(gamestate.turnNr);   
 
-        let rollsLeft = document.querySelector("#rolls-left");
-        rollsLeft.innerHTML = 3;
-        nextTurn();
-        rollButton.disabled = false;
-        document.querySelector("#total").innerHTML = totalScore();
-        resetDice();
-        rollTheDice()
-    } else {
-        alert("Du skal vælge et resultat at gemme.")
-    }
+    let resultList = gamestate.result.list;
+    let totalScore = gamestate.result.totalScore;
+    let sum = gamestate.sumAndBonus.sum;
+    let bonus = gamestate.sumAndBonus.bonus;
+    let finished = gamestate.finished;
+    
 }
-
 /*
 Opdatere "rul tilbage" counteren, ved at hente rul tilbage fra gamestate.
 Hvis der ikke er flere rul tilbage, så låses knappen

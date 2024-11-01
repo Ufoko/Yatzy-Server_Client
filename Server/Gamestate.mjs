@@ -16,11 +16,11 @@ class gameState {
         //Resultlisten
         this.results = {};
         for (let eyes = 1; index <= 6; index++) {
-            results[eyes] = new resultLine(index + "-s", upperSectionScore(eyes));
+            results[eyes + '-s'] = new resultLine(index + "-s", upperSectionScore(eyes));
         }
         results['onePair'] = new resultLine('onePair', onePairScore(this.dice));
         results['twoPair'] = new resultLine('twoPair', twoPairScore(this.dice));
-        results['threeOfAKinde'] = new resultLine('threeOfAKinde', threeOfAKindScore(this.dice));
+        results['threeOfAKind'] = new resultLine('threeOfAKinde', threeOfAKindScore(this.dice));
         results['fourOfAkind'] = new resultLine('fourOfAkind', fourOfAKindScore(this.dice));
         results['fullHouseScore'] = new resultLine('fullHouseScore', fullHouseScore(this.dice));
         results['smallStraightScore'] = new resultLine('smallStraightScore', smallStraightScore(this.dice));
@@ -51,7 +51,7 @@ class gameState {
         if (this.turnCounter == 15) {
             this.finished = true;
         }
-        return { turnNr: this.turnCounter, result: { list: this.results, totalScore: totalScore }, finished: this.finished };
+        return { turnNr: this.turnCounter, result: { list: this.results, totalScore: totalScore }, sumAndBonus: { sum: this.sum(), bonus: this.bonus() }, finished: this.finished };
     }
 
     rollDice() {
@@ -66,6 +66,19 @@ class gameState {
 
     choosePoint(name) {
         this.results[name].used = true;
+    }
+
+    bonus() {
+        let singlesScore = sum();
+        return singlesScore >= 63 ? 50 : 0
+    }
+
+    sum() {
+        let singlesScore = 0
+        for (let eyes = 1; index <= 6; index++) {
+            singlesScore += (results[index + '-s'].used) ? results[index + '-s'].score : 0;
+        }
+        return singlesScore;
     }
 }
 
