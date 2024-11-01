@@ -28,14 +28,12 @@ function saveJSON(data) {
 
 
   /**
-   * Private function, only to be called from inside Storage
    * Loads the savegames.
    * It makes sure it's in an array type
    * @returns the savegames
    */
-function loadJSON() {
+export function loadJSON() {
     try {
-
     let fileContent = fs.readFileSync(savePath, 'utf8');
     let data = fileContent ? JSON.parse(fileContent) : []; //If filecontent is empty, initialze as [], otherwise use the parse
     return Array.isArray(data) ? data : []; // Safeguard to ensure is array. If the data is in array format, return the data, otherwise returns empty array
