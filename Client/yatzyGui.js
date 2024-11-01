@@ -56,21 +56,14 @@ function setOnClick() {
 
 function rollTheDice() {
     rollDice()
-    let dieArray = getDice()
-    for (let i = 0; i < dieArray.length; i++) {
-        if (!getDieState(i)) {
-            let dieString = '<img id="die' + i + '" class="die" src="img\\dice-' + dieArray[i].value + '.svg" alt="dice' + (dieArray[i].value + 1) + '"></img>'
-            let dieImage = document.querySelector("#die" + i)
-            dieImage.outerHTML = dieString
-        }
-    }
+    setDice()
     setOnClick() /* Vi er nødt til at kalde setOnClick igen, da vi teknisk set får lavet nye objekter*/
     updateResults() /* Vi opdatere resultaterne til højre */
     updateCount() /* Opdatere*/
 }
 
 
-function drawCombinations() {
+async function drawCombinations() {
     combinationDiv.innerHTML = "";
     /* Løber alle "options" igennem, for at oprette alle resultat felter og tekster */
     for (let index = 0; index < options.length; index++) {
@@ -93,13 +86,23 @@ function drawCombinations() {
     /* Giver dem alle sammen en onclick funktion */
     for (let i = 0; i < options.length; i++) {
         let resultButton = document.querySelector('#button' + i);
-        resultButton.onclick = function () {
+        resultButton.onclick = async function () {
+            postChoosePoint(i)
+            
+            let gamestate = await getGamestate()
+            setTurn(gamestate.turnNr)
+            setT
+            
             let succeed = assignResult(i);
             if (succeed) {
                 resultButton.className = "result-button-clicked";
             }
         }
     }
+}
+
+function setTurn(turnNr) {
+    turnHeader.innerHTML = "Turn " + turnNr;
 }
 
 
@@ -114,7 +117,7 @@ function newTurn() {
             startGame();
           }
     } else if (takenThisRound()) {
-        turnHeader.innerHTML = "Turn " + getNextTurn();
+
         let rollsLeft = document.querySelector("#rolls-left");
         rollsLeft.innerHTML = 3;
         nextTurn();
@@ -158,8 +161,16 @@ Låser den givne terning nede i yatzyLogic, og giver det en ny klasse, så en ny
 */
 function holdDieGUI(number) {
     postLockDice(number)
-    let dice = getDice()
-    let dieImage = document.querySelector("#die" + number)
-    let newClass = (getDieState(number)) ? "die-clicked" : "die";
-    dieImage.className = newClass;
+    setDice()
+}
+
+function setDice() {
+    let dieArray = getDice()
+    for (let i = 0; i < dieArray.length; i++) {
+        if (!getDieState(i)) {
+            let dieString = '<img id="die' + i + '" class="die" src="img\\dice-' + dieArray[i].value + '.svg" alt="dice' + (dieArray[i].value + 1) + '"></img>'
+            let dieImage = document.querySelector("#die" + i)
+            dieImage.outerHTML = dieString
+        }
+    }
 }

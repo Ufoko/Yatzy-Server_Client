@@ -1,13 +1,13 @@
 
 async function get(url) {
-    const respons = await fetch('localhost/8000' + url);
+    const respons = await fetch('localhost:69304' + url);
     if (respons.status !== 200) // OK
         throw new Error(respons.status);
     return await respons.json();
 }
 
 async function post(url, object) {
-    const respons = await fetch('localhost/8000' + url, {
+    const respons = await fetch('localhost:69304' + url, {
         method: 'POST',
         body: JSON.stringify(object),
         headers: { 'Content-Type': 'application/json' }
@@ -39,9 +39,9 @@ export async function getGamestate() {
     return gamestate
 }
 
-export async function postRoll(roll) {
+export async function postRoll() {
     try {
-        let respons = await post("/roll", roll);
+        let respons = await post("/roll");
         console.log(respons);
     } catch (fejl) {
         console.log(fejl);
@@ -50,7 +50,7 @@ export async function postRoll(roll) {
 
 export async function postLockDice(number) {
     try {
-        let respons = await post("/lockDice", number);
+        let respons = await post("/lockDice", {number:number});
         console.log(respons);
     } catch (fejl) {
         console.log(fejl);
@@ -59,7 +59,7 @@ export async function postLockDice(number) {
 
 export async function postChoosePoint(name) {
     try {
-        let respons = await post("/choosePoint", name);
+        let respons = await post("/choosePoint", {name:name});
         console.log(respons);
     } catch (fejl) {
         console.log(fejl);
