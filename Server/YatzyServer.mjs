@@ -50,8 +50,8 @@ app.post('/lockDice', async (request, response) => {
     response.sendStatus(201);
 });
 app.post('/choosePoint', async (request, response) => {
-    console.info('Client nr ' +  id + " chose point")
     let id = request.session.playerId;
+    console.info('Client nr ' +  id + " chose point")
     const { name } = request.body;
     gameStates[id].choosePoint(name);
     response.sendStatus(201);

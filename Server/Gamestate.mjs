@@ -39,9 +39,10 @@ export class GameState {
         let totalScore = 0;
         for (const resultKey in this.results) {
             let resultLine = this.results[resultKey]
-            resultLine.score = resultLine.calculater();
             if (resultLine.used) {
                 totalScore += resultLine.score;
+            } else {
+                resultLine.score = resultLine.calculater();
             }
         }
         this.turnCounter++;

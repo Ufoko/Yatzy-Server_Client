@@ -92,10 +92,10 @@ function drawCombinations() {
 
 async function assignOnClick() {
     /* Giver dem alle sammen en onclick funktion */
-    for (let index = 1; index < nameIndex.keys.length + 1; index++) {
+    for (let index = 1; index < nameIndex.size; index++) {
         let resultButton = document.querySelector('#button' + index);
         resultButton.onclick = async function () {
-            postChoosePoint(i)
+            postChoosePoint(nameIndex.get(index))
             await updateGamestate()
         }
     }
