@@ -17,7 +17,7 @@ app.use(sessions({ secret: 'hemmelig', saveUninitialized: true, cookie: { maxAge
 
 app.get('/dice', async (request, response) => {
     let id = request.session.id;
-    response.send(gameStates[id].dice);
+    response.send(gameStates[idIndexMap.get(id)].dice);
 });
 app.get('/gamestate', async (request, response) => {
     let id = request.session.id;

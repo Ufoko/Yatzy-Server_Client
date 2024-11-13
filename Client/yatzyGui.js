@@ -72,7 +72,7 @@ function rollTheDice() {
 function drawCombinations() {
     combinationDiv.innerHTML = "";
     /* Løber alle "options" igennem, for at oprette alle resultat felter og tekster */
-    for (let index = 1; index < nameIndex.keys.length + 1; index++) {
+    for (let index = 1; index < nameIndex.size + 1; index++) {
         /* Tilføjer teksten*/
         combinationDiv.innerHTML = combinationDiv.innerHTML + nameIndex[index];
 
