@@ -34,10 +34,12 @@ app.get('/gamestate', async (request, response) => {
         id = request.session.playerId;
         gameStates[id] = new GameState();
     }
+    console.log(id)
     response.send(gameStates[id].gameState());
 });
 app.post('/roll', async (request, response) => {
     let id = request.session.playerId;
+    console.info('Client nr ' +  id + " rolled")
     gameStates[id].rollDice();
     response.sendStatus(201);
 });

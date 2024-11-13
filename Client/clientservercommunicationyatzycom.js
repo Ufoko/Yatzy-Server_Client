@@ -28,7 +28,6 @@ export async function getDice() {
     } catch (fejl) {
         console.log(fejl);
     }
-    console.log(dice);
     return dice
 }
 

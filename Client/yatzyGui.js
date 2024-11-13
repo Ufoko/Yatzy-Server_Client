@@ -62,9 +62,9 @@ function setOnClick() {
     dieButton4.onclick = () => holdDieGUI(4)
 }
 
-function rollTheDice() {
+async function rollTheDice() {
     postRoll()
-    setDice()
+    await setDice()
     setOnClick() /* Vi er nødt til at kalde setOnClick igen, da vi teknisk set får lavet nye objekter*/
     updateGamestate();
 }
@@ -96,7 +96,7 @@ async function assignOnClick(resultList) {
         let resultButton = document.querySelector('#button' + index);
         resultButton.onclick = async function () {
             postChoosePoint(i)
-            await updateGamestate()      
+            await updateGamestate()
         }
     }
 }
@@ -108,7 +108,7 @@ function setTurn(turnNr) {
 
 async function updateGamestate() {
     let gamestate = await getGamestate();
-    setTurn(gamestate.turnNr);   
+    setTurn(gamestate.turnNr);
 
     let resultList = gamestate.result.list;
     let totalScore = gamestate.result.totalScore;
@@ -120,7 +120,7 @@ async function updateGamestate() {
 }
 
 function updateTotalScore(totalScore) {
-    document.querySelector("#total").innerHTML = "Result: " + totalScore;
+    document.querySelector("#total").innerHTML = totalScore;
 }
 
 /*
@@ -140,8 +140,11 @@ function updateCount() {
 Opdatere alle resultaterne, ved at hente dem i gamestate, og derefter opdatere innerHTML i alle de tilsvarende elementer
 */
 function updateResults(resultArray, sum, bonus) {
-    for (let index = 0; index < resultArray.length; index++) {
-        document.querySelector("#button" + index).innerHTML = resultArray[index].value
+    let indexCounter = 1;
+    for (const key in resultArray) {
+        const element = resultArray[key];
+        document.querySelector("#button" + indexCounter).innerHTML = element.score;
+        indexCounter++;
     }
     document.querySelector("#buttonSum").innerHTML = sum;
     document.querySelector("#buttonBonus").innerHTML = bonus
@@ -155,10 +158,10 @@ function holdDieGUI(number) {
     setDice()
 }
 
-function setDice() {
-    let dieArray = getDice()
+async function setDice() {
+    let dieArray = await getDice()
     for (let i = 0; i < dieArray.length; i++) {
-        if (!getDieState(i)) {
+        if (!dieArray[i].hold) {
             let dieString = '<img id="die' + i + '" class="die" src="img\\dice-' + dieArray[i].value + '.svg" alt="dice' + (dieArray[i].value + 1) + '"></img>'
             let dieImage = document.querySelector("#die" + i)
             dieImage.outerHTML = dieString
