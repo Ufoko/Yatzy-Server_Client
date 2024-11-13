@@ -1,6 +1,10 @@
+let clientId = 1;
 
 async function get(url) {
-    const respons = await fetch('http://localhost:11111' + url);
+    const respons = await fetch('http://localhost:11111' + url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    });
     if (respons.status !== 200) // OK
         throw new Error(respons.status);
     return await respons.json();
@@ -31,7 +35,7 @@ export async function getDice() {
 export async function getGamestate() {
     let gamestate;
     try {
-        gamestate = await get("/gamestate");
+        gamestate = await get("/gamestate", {id: clientId});
     } catch (fejl) {
         console.log(fejl);
     }
