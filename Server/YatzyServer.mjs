@@ -1,4 +1,4 @@
-import express, { json, Router } from 'express';
+import express, { json } from 'express';
 import cors from 'cors';
 const app = express();
 import { gameStates, GameState } from './Gamestate.mjs';
@@ -8,19 +8,17 @@ let idIndexMap = new Map();
 let indexCounter = 0;
 
 app.use(json());
-//app.use(express.json());
 app.use(cors());
-// app.set('view engine', 'pug');
-
 app.use(sessions({ secret: 'hemmelig', saveUninitialized: true, cookie: { maxAge: 1000 * 60 * 20 }, resave: false }));
-// app.use(express.static(dirname + '/filer'));
 
 app.get('/dice', async (request, response) => {
     let id = request.session.id;
+    console.log(id)
     response.send(gameStates[idIndexMap.get(id)].dice);
 });
 app.get('/gamestate', async (request, response) => {
     let id = request.session.id;
+    console.log(id)
     if (idIndexMap.get(id) == undefined) {
         idIndexMap.set(id, indexCounter++);
         gameStates[idIndexMap.get(id)] = new GameState();
@@ -29,7 +27,7 @@ app.get('/gamestate', async (request, response) => {
 });
 app.post('/roll', async (request, response) => {
     let id = request.session.id;
-    gameStates[id].rollDice();
+    gameStates[idIndexMap.get(id)].rollDice();
     response.sendStatus(201);
 });
 app.post('/lockDice', async (request, response) => {
