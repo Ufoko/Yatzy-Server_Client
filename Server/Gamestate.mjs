@@ -3,7 +3,7 @@ import { chanceScore, fourOfAKindScore, fullHouseScore, largeStraightScore, oneP
 
 export let gameStates = [];
 
-class gameState {
+export class GameState {
     constructor(playerName) {
         this.name = playerName;
         this.turnCounter = 0;

@@ -1,13 +1,13 @@
 
 async function get(url) {
-    const respons = await fetch('localhost:69304' + url);
+    const respons = await fetch('http://localhost:11111' + url);
     if (respons.status !== 200) // OK
         throw new Error(respons.status);
     return await respons.json();
 }
 
 async function post(url, object) {
-    const respons = await fetch('localhost:69304' + url, {
+    const respons = await fetch('http://localhost:11111' + url, {
         method: 'POST',
         body: JSON.stringify(object),
         headers: { 'Content-Type': 'application/json' }

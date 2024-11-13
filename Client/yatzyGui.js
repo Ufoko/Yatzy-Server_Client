@@ -1,6 +1,6 @@
 //import { allTaken, assignResult, bonus, getNextCount, getNextTurn, getResults, nextTurn, results, startUp, sum, takenThisRound, totalScore } from './gamestate.js'
 //import { createDice, holdDie, rollDice, getDice, getDieState, resetDice } from './yatzyLogic.js'
-import { getDice, getGamestate, postRoll, postLockDice, postChoosePoint, postChoosePoint } from "./clientservercommunicationyatzycom";
+import { getDice, getGamestate, postRoll, postLockDice, postChoosePoint } from "./clientservercommunicationyatzycom.js";
 
 /* Gemmer nogle elementer, som vi skal bruge i løbet at spillet*/
 const turnHeader = document.querySelector("h2");
@@ -9,7 +9,7 @@ const rollButton = document.querySelector("#roll")    /* Får fat i "Roll Again"
 rollButton.onclick = () => rollTheDice()
 
 const roundButton = document.querySelector("#next-round")    /* Får fat i "Ny runde" Knappen*/
-roundButton.onclick = () => newTurn()
+// roundButton.onclick = () => newTurn()
 
 const combinationDiv = document.getElementById('combinations')
 
@@ -37,11 +37,12 @@ kalder startUp() på gamestate, så den kan initialisere sin results[],
 og createDice(), så nye terninger oprettes
 */
 function startGame() {
+    console.log("Starter client")
     drawCombinations()
-    createDice()
     setOnClick()
-    startUp()
-    newTurn()
+    updateGamestate()
+    // startUp()
+    // newTurn()
 }
 
 
@@ -62,11 +63,10 @@ function setOnClick() {
 }
 
 function rollTheDice() {
-    rollDice()
+    postRoll()
     setDice()
     setOnClick() /* Vi er nødt til at kalde setOnClick igen, da vi teknisk set får lavet nye objekter*/
-    updateResults() /* Vi opdatere resultaterne til højre */
-    updateCount() /* Opdatere*/
+    updateGamestate();
 }
 
 function drawCombinations() {
@@ -114,9 +114,15 @@ async function updateGamestate() {
     let totalScore = gamestate.result.totalScore;
     let sum = gamestate.sumAndBonus.sum;
     let bonus = gamestate.sumAndBonus.bonus;
+    updateResults(resultList, sum, bonus);
+    updateTotalScore(totalScore);
     let finished = gamestate.finished;
-    
 }
+
+function updateTotalScore(totalScore) {
+    document.querySelector("#total").innerHTML = "Result: " + totalScore;
+}
+
 /*
 Opdatere "rul tilbage" counteren, ved at hente rul tilbage fra gamestate.
 Hvis der ikke er flere rul tilbage, så låses knappen
@@ -133,14 +139,12 @@ function updateCount() {
 /* 
 Opdatere alle resultaterne, ved at hente dem i gamestate, og derefter opdatere innerHTML i alle de tilsvarende elementer
 */
-function updateResults() {
-    let resultArray = getResults()
+function updateResults(resultArray, sum, bonus) {
     for (let index = 0; index < resultArray.length; index++) {
         document.querySelector("#button" + index).innerHTML = resultArray[index].value
     }
-    document.querySelector("#buttonSum").innerHTML = sum();
-    document.querySelector("#buttonBonus").innerHTML = bonus()
-
+    document.querySelector("#buttonSum").innerHTML = sum;
+    document.querySelector("#buttonBonus").innerHTML = bonus
 }
 
 /*
