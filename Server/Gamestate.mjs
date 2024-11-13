@@ -3,30 +3,17 @@ import { chanceScore, fourOfAKindScore, fullHouseScore, largeStraightScore, oneP
 
 export let gameStates = [];
 
-/**
- * creates 6 die
- */
-function createDice() {
-    let diceArray = []
-    for (let index = 0; index < 5; index++) {
-        const newDie = new Object()
-        newDie.value = 0
-        newDie.hold = false
-        diceArray[index] = newDie
-    }
-    return diceArray;
-}
-
 export class GameState {
     constructor(playerName) {
         this.name = playerName;
         this.turnCounter = 0;
         this.finished = false;
-        this.dice = createDice();
 
         //Terninger
-        this.dice = [5];
-        this.dice.forEach(index => this.dice[index] = new die());
+        this.dice = [];
+        for (let index = 0; index < 5; index++) {
+            this.dice[index] = new die()            
+        }
 
         //Resultlisten
         this.results = {};
@@ -87,14 +74,14 @@ export class GameState {
     }
 
     bonus() {
-        let singlesScore = sum();
+        let singlesScore = this.sum();
         return singlesScore >= 63 ? 50 : 0
     }
 
     sum() {
         let singlesScore = 0
-        for (let eyes = 1; index <= 6; index++) {
-            singlesScore += (results[index + '-s'].used) ? results[index + '-s'].score : 0;
+        for (let index = 1; index <= 6; index++) {
+            singlesScore += (this.results[index + '-s'].used) ? this.results[index + '-s'].score : 0;
         }
         return singlesScore;
     }
@@ -116,8 +103,8 @@ class die {
     }
 
     roll() {
-        if (die.hold != true) {
-            die.value = Math.floor(Math.random() * 6 + 1)
-        }
+        if (this.hold != true) {
+             return this.value = Math.floor(Math.random() * 6 + 1)
+        } else return this.value;
     }
 }

@@ -48,7 +48,7 @@ export function threeOfAKindScore(dice) {
     return () => findMathingEyes(dice, 0, 3)
 }
 
-export function fourOfAKindScore() {
+export function fourOfAKindScore(dice) {
     return () => findMathingEyes(dice, 0, 4)
 }
 
@@ -75,7 +75,7 @@ export function checkInARow(diceArray, inARow) {
     return straightPossible
 }
 
-export function largeStraightScore() {
+export function largeStraightScore(dice) {
     return () => checkInARow(dice, 5) ? 20 : 0
 }
 
