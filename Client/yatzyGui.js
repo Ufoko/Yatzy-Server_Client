@@ -90,7 +90,7 @@ function drawCombinations() {
     }
 }
 
-async function assignOnClick(resultList) {
+async function assignOnClick() {
     /* Giver dem alle sammen en onclick funktion */
     for (let index = 1; index < nameIndex.keys.length + 1; index++) {
         let resultButton = document.querySelector('#button' + index);
@@ -115,6 +115,7 @@ async function updateGamestate() {
     let sum = gamestate.sumAndBonus.sum;
     let bonus = gamestate.sumAndBonus.bonus;
     updateResults(resultList, sum, bonus);
+    assignOnClick()
     updateTotalScore(totalScore);
     let finished = gamestate.finished;
 }

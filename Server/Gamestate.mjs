@@ -29,14 +29,6 @@ export class GameState {
         this.results['largeStraightScore'] = new resultLine('largeStraightScore', largeStraightScore(this.dice));
         this.results['chanceScore'] = new resultLine('chanceScore', chanceScore(this.dice));
         this.results['yatzyScore'] = new resultLine('yatzyScore', yatzyScore(this.dice));
-
-        this.totalScore = (results) => {
-            let sum = 0;
-            for (const resultLine of results) {
-                sum += resultLine.score;
-            }
-            return sum;
-        }
     }
 
     /**
@@ -47,8 +39,8 @@ export class GameState {
         let totalScore = 0;
         for (const resultKey in this.results) {
             let resultLine = this.results[resultKey]
-            if (!resultLine.used) {
-                resultLine.score = resultLine.calculater();
+            resultLine.score = resultLine.calculater();
+            if (resultLine.used) {
                 totalScore += resultLine.score;
             }
         }
