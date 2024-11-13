@@ -8,11 +8,12 @@ export class GameState {
         this.name = playerName;
         this.turnCounter = 0;
         this.finished = false;
+        this.rollCount = 0;
 
         //Terninger
         this.dice = [];
         for (let index = 0; index < 5; index++) {
-            this.dice[index] = new die()            
+            this.dice[index] = new die()
         }
 
         //Resultlisten
@@ -45,16 +46,25 @@ export class GameState {
                 resultLine.score = resultLine.calculater();
             }
         }
-        this.turnCounter++;
+
         if (this.turnCounter == 15) {
             this.finished = true;
         }
         return { turnNr: this.turnCounter, result: { list: this.results, totalScore: totalScore }, sumAndBonus: { sum: this.sum(), bonus: this.bonus() }, finished: this.finished };
     }
 
+    newturn() {
+        this.rollCount = 0;
+        this.turnCounter++;
+        this.rollDice();
+    }
+
     rollDice() {
-        for (const die of this.dice) {
-            die.roll();
+        if (this.rollCount < 3) {
+            this.rollCount++;
+            for (const die of this.dice) {
+                die.roll();
+            }
         }
     }
 
@@ -63,6 +73,7 @@ export class GameState {
     }
 
     choosePoint(name) {
+        this.newturn();
         this.results[name].used = true;
     }
 
@@ -97,7 +108,7 @@ class die {
 
     roll() {
         if (this.hold != true) {
-             return this.value = Math.floor(Math.random() * 6 + 1)
+            return this.value = Math.floor(Math.random() * 6 + 1)
         } else return this.value;
     }
 }
