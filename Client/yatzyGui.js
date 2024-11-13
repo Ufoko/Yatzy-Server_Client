@@ -74,7 +74,7 @@ function drawCombinations() {
     /* Løber alle "options" igennem, for at oprette alle resultat felter og tekster */
     for (let index = 1; index < nameIndex.size + 1; index++) {
         /* Tilføjer teksten*/
-        combinationDiv.innerHTML = combinationDiv.innerHTML + nameIndex[index];
+        combinationDiv.innerHTML = combinationDiv.innerHTML + nameIndex.get(index);
 
         /* Tilføjer knappen med scoren i*/
         combinationDiv.innerHTML = combinationDiv.innerHTML + '<button id="button' + index + '" class="result-button"></button>'
