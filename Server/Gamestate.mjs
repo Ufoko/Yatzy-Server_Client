@@ -3,30 +3,45 @@ import { chanceScore, fourOfAKindScore, fullHouseScore, largeStraightScore, oneP
 
 export let gameStates = [];
 
+/**
+ * creates 6 die
+ */
+function createDice() {
+    let diceArray = []
+    for (let index = 0; index < 5; index++) {
+        const newDie = new Object()
+        newDie.value = 0
+        newDie.hold = false
+        diceArray[index] = newDie
+    }
+    return diceArray;
+}
+
 export class GameState {
     constructor(playerName) {
         this.name = playerName;
         this.turnCounter = 0;
         this.finished = false;
+        this.dice = createDice();
 
         //Terninger
         this.dice = [5];
-        this.dice.forEach(index => dice[index] = new die());
+        this.dice.forEach(index => this.dice[index] = new die());
 
         //Resultlisten
         this.results = {};
-        for (let eyes = 1; index <= 6; index++) {
-            results[eyes + '-s'] = new resultLine(index + "-s", upperSectionScore(eyes));
+        for (let index = 1; index <= 6; index++) {
+            this.results[index + '-s'] = new resultLine(index + "-s", upperSectionScore(index, this.dice));
         }
-        results['onePair'] = new resultLine('onePair', onePairScore(this.dice));
-        results['twoPair'] = new resultLine('twoPair', twoPairScore(this.dice));
-        results['threeOfAKind'] = new resultLine('threeOfAKinde', threeOfAKindScore(this.dice));
-        results['fourOfAkind'] = new resultLine('fourOfAkind', fourOfAKindScore(this.dice));
-        results['fullHouseScore'] = new resultLine('fullHouseScore', fullHouseScore(this.dice));
-        results['smallStraightScore'] = new resultLine('smallStraightScore', smallStraightScore(this.dice));
-        results['largeStraightScore'] = new resultLine('largeStraightScore', largeStraightScore(this.dice));
-        results['chanceScore'] = new resultLine('chanceScore', chanceScore(this.dice));
-        results['yatzyScore'] = new resultLine('yatzyScore', yatzyScore(this.dice));
+        this.results['onePair'] = new resultLine('onePair', onePairScore(this.dice));
+        this.results['twoPair'] = new resultLine('twoPair', twoPairScore(this.dice));
+        this.results['threeOfAKind'] = new resultLine('threeOfAKinde', threeOfAKindScore(this.dice));
+        this.results['fourOfAkind'] = new resultLine('fourOfAkind', fourOfAKindScore(this.dice));
+        this.results['fullHouseScore'] = new resultLine('fullHouseScore', fullHouseScore(this.dice));
+        this.results['smallStraightScore'] = new resultLine('smallStraightScore', smallStraightScore(this.dice));
+        this.results['largeStraightScore'] = new resultLine('largeStraightScore', largeStraightScore(this.dice));
+        this.results['chanceScore'] = new resultLine('chanceScore', chanceScore(this.dice));
+        this.results['yatzyScore'] = new resultLine('yatzyScore', yatzyScore(this.dice));
 
         this.totalScore = (results) => {
             let sum = 0;
@@ -43,9 +58,12 @@ export class GameState {
      */
     gameState() {
         let totalScore = 0;
-        for (const resultLine of this.results.filter(resultLine = !resultLine.used)) {
-            resultLine.score = resultLine.calculater();
-            totalScore += resultLine.score;
+        for (const resultKey in this.results) {
+            let resultLine = this.results[resultKey]
+            if (!resultLine.used) {
+                resultLine.score = resultLine.calculater();
+                totalScore += resultLine.score;
+            }
         }
         this.turnCounter++;
         if (this.turnCounter == 15) {

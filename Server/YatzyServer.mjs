@@ -1,10 +1,12 @@
-import express, { json } from 'express';
+import express, { json, Router } from 'express';
 import cors from 'cors';
 const app = express();
 import { gameStates, GameState } from './Gamestate.mjs';
 import sessions from 'express-session';
 
-app.use()
+let idIndexMap = new Map();
+let indexCounter = 0;
+
 app.use(json());
 //app.use(express.json());
 app.use(cors());
@@ -18,12 +20,12 @@ app.get('/dice', async (request, response) => {
     response.send(gameStates[id].dice);
 });
 app.get('/gamestate', async (request, response) => {
-    if (request.session.id == undefined) {
-        request.session.id = Math.floor(Math.random()*16);
-        gameStates[id] = new GameState();
-    }
     let id = request.session.id;
-    response.send(gameStates[id].gameState());
+    if (idIndexMap.get(id) == undefined) {
+        idIndexMap.set(id, indexCounter++);
+        gameStates[idIndexMap.get(id)] = new GameState();
+    }
+    response.send(gameStates[idIndexMap.get(id)].gameState());
 });
 app.post('/roll', async (request, response) => {
     let id = request.session.id;

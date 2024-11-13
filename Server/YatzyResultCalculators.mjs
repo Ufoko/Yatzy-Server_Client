@@ -1,4 +1,4 @@
-export function upperSectionScore(eyes) {
+export function upperSectionScore(eyes, diceArray) {
     return () => {
         let counter = 0
         for (const die of diceArray) {
