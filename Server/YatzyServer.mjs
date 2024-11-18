@@ -83,6 +83,7 @@ for (const game of loadGames()) {
     games.push({'name': game.name, 'score': game.gamestate().totalScore})
 }}
 catch(TypeError){
+    //savegames er tom
     console.log("Skyd dig selv")
 }
 
