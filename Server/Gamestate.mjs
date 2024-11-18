@@ -57,8 +57,12 @@ export class GameState {
     newturn() {
         this.rollCount = 0;
         this.turnCounter++;
-        this.dice.forEach(die => die.hold = false);
-        this.rollDice();
+        if (this.turnCounter == 16) {
+            this.finished = true;
+        } else {
+            this.dice.forEach(die => die.hold = false);
+            this.rollDice();
+        }
     }
 
     rollDice() {

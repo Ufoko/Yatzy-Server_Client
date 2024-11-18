@@ -5,7 +5,7 @@ import { gameStates, GameState } from './Gamestate.mjs';
 import sessions from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import {loadGames} from 'Storage.js'
+import { loadGames } from './Storage.mjs';
 
 app.use(json());
 app.use(cors());
@@ -46,7 +46,7 @@ app.post('/roll', async (request, response) => {
 app.post('/lockDice', async (request, response) => {
     let id = request.session.playerId;
     const { number } = request.body;
-    gameStates[id].diceHoldChange(number)
+    gameStates[id].diceHoldChange(number);
     response.sendStatus(201);
 });
 app.post('/choosePoint', async (request, response) => {
@@ -59,7 +59,7 @@ app.post('/choosePoint', async (request, response) => {
 
 app.get('/savedGames', async (request, response) => {
     let id = request.session.playerId;
-    response.send(loadGames);
+    response.send(loadGames());
 });
 
 const portNr = 11111;

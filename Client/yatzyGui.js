@@ -92,7 +92,7 @@ function drawCombinations() {
 
 async function assignOnClick() {
     /* Giver dem alle sammen en onclick funktion */
-    for (let index = 1; index < nameIndex.size; index++) {
+    for (let index = 1; index <= nameIndex.size; index++) {
         let resultButton = document.querySelector('#button' + index);
         resultButton.onclick = async function () {
             postChoosePoint(nameIndex.get(index))
@@ -121,6 +121,7 @@ async function updateGamestate() {
     updateTotalScore(totalScore);
     setDice();
     let finished = gamestate.finished;
+    if (finished) document.querySelector("#Finish-Screen").showModal();
 }
 
 function updateTotalScore(totalScore) {
