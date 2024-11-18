@@ -63,14 +63,16 @@ app.post('/choosePoint', async (request, response) => {
     gameStates[id].choosePoint(name);
     response.sendStatus(201);
 });
-app.post('/frontpage', async (request, response) => {
-    
+app.post('/loadGame', async (request, response) => {
+    const { name } = request.body;
+    request.session.playerName = name;
+});
+app.get('/frontpage', async (request, response) => {
+        response.render(__dirname,'mops.pug', createFrontPage())
 });
 
-createFrontPage();
 
 function createFrontPage(){
-    console.log("TESTER")
     let games = [];
 
     games.push({'name': "Thor", 'score': 23})
@@ -88,7 +90,7 @@ catch(TypeError){
 }
 
 
-console.log(renderFile(join(__dirname, '/mops.pug'), {games}));
+return games;
 }
 
 
