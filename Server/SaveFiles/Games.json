@@ -78,5 +78,85 @@
       }
     },
     "totalScore": 76
+  },
+  {
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 2
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 0
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 3
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 0
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 10
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 6
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 8
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 0
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 0
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 0
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 15
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 0
+      }
+    },
+    "totalScore": 44
   }
 ]

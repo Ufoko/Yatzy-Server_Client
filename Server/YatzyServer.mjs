@@ -3,15 +3,25 @@ import cors from 'cors';
 const app = express();
 import { gameStates, GameState } from './Gamestate.mjs';
 import sessions from 'express-session';
-import path from 'path';
+import path, { dirname } from 'path';
 import { renderFile } from 'pug';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import { loadGames } from './Storage.mjs'
 
+let games = [];
+
+games.push({ 'name': "Thor", 'score': 23 })
+games.push({ 'name': "Bo", 'score': 44 })
+games.push({ 'name': "Carl", 'score': 43 })
+games.push({ 'name': "Thor", 'score': 2 })
+// console.log(renderFile(join(__dirname, '/mops.pug'), {games}))
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+app.set('views', path.join(__dirname, '/views'));
+console.log(renderFile(path.join(__dirname, '/views/mops.pug'), { games }));
 
 app.use(json());
 app.use(cors());
@@ -29,12 +39,13 @@ let indexCounter = 0;
 app.get('/dice', async (request, response) => {
     let id = request.session.playerId;
     console.log(id)
-    response.send({dice : gameStates[id].dice, rollsLeft : 3 - gameStates[id].rollCount});
+    response.send({ dice: gameStates[id].dice, rollsLeft: 3 - gameStates[id].rollCount });
 });
 app.get('/gamestate', async (request, response) => {
     // let id = request.session.id;
     let id = request.session.playerId;
     let name = request.session.playerName;
+    console.log(name);
     console.log(id)
     if (id == undefined) {
         request.session.playerId = indexCounter;
@@ -47,7 +58,7 @@ app.get('/gamestate', async (request, response) => {
 });
 app.post('/roll', async (request, response) => {
     let id = request.session.playerId;
-    console.info('Client nr ' +  id + " rolled")
+    console.info('Client nr ' + id + " rolled")
     gameStates[id].rollDice();
     response.sendStatus(201);
 });
@@ -59,39 +70,50 @@ app.post('/lockDice', async (request, response) => {
 });
 app.post('/choosePoint', async (request, response) => {
     let id = request.session.playerId;
-    console.info('Client nr ' +  id + " chose point")
+    console.info('Client nr ' + id + " chose point")
     const { name } = request.body;
     gameStates[id].choosePoint(name);
     response.sendStatus(201);
 });
+
+app.get('/game', async (request, response) =>{
+    console.log(__dirname + '\\..\\Client\\yatzy.html')
+    // let path = __dirname.slice(0, __dirname.length - 6 + "Client\\yatzy.html")
+    // console.log(path)
+    response.sendFile(path.resolve( __dirname + "\\..\\Client\\yatzy.html"))
+})
+
 app.post('/loadGame', async (request, response) => {
     const { name } = request.body;
     request.session.playerName = name;
+    response.redirect(301, '/game');
 });
-app.get('/frontpage', async (request, response) => {
-        response.render(__dirname,'mops.pug', createFrontPage())
+
+app.get('/', async (request, response) => {
+    response.render('mops', { games: games });
 });
 
 
-function createFrontPage(){
+function createFrontPage() {
     let games = [];
 
-    games.push({'name': "Thor", 'score': 23})
-    games.push({'name': "Bo", 'score': 44})
-    games.push({'name': "Carl", 'score': 43})
-    games.push({'name': "Thor", 'score': 2})
+    games.push({ 'name': "Thor", 'score': 23 })
+    games.push({ 'name': "Bo", 'score': 44 })
+    games.push({ 'name': "Carl", 'score': 43 })
+    games.push({ 'name': "Thor", 'score': 2 })
 
-try{
-for (const game of loadGames()) { 
-    games.push({'name': game.name, 'score': game.gamestate().totalScore})
-}}
-catch(TypeError){
-    //savegames er tom
-    console.log("Skyd dig selv")
-}
+    try {
+        for (const game of loadGames()) {
+            games.push({ 'name': game.name, 'score': game.gamestate().totalScore })
+        }
+    }
+    catch (TypeError) {
+        //savegames er tom
+        console.log("Skyd dig selv")
+    }
 
 
-return games;
+    return games;
 }
 
 
