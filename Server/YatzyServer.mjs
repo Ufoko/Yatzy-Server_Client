@@ -7,7 +7,7 @@ import path from 'path';
 import { renderFile } from 'pug';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
-import {loadGames} from '../Server/Storage.js'
+import { loadGames } from './Storage.mjs'
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -78,9 +78,12 @@ function createFrontPage(){
     games.push({'name': "Carl", 'score': 43})
     games.push({'name': "Thor", 'score': 2})
 
-
+try{
 for (const game of loadGames()) { 
     games.push({'name': game.name, 'score': game.gamestate().totalScore})
+}}
+catch(TypeError){
+    console.log("Skyd dig selv")
 }
 
 
