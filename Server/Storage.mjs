@@ -1,4 +1,5 @@
-let savePath = process.cwd() + "/Yatzy-Server_Client/Server/SaveFiles/Games.json"
+let savePath = process.cwd() + "/Server/SaveFiles/Games.json"
+import fs from "fs"
 
 
 /**
@@ -6,14 +7,14 @@ let savePath = process.cwd() + "/Yatzy-Server_Client/Server/SaveFiles/Games.json
  * @param {*} game The game to be saved
  */
 export function saveGame(game) {
-   
-    let jsonData = loadJSON(); 
+
+  let jsonData = loadJSON();
 
 
-    jsonData.push(game); 
-    
-    saveJSON(jsonData); 
-    console.log("New entry added");
+  jsonData.push(game);
+
+  saveJSON(jsonData);
+  console.log("New entry added");
 
 }
 
@@ -21,7 +22,7 @@ export function saveGame(game) {
  * Function to get all stored games
  * @returns json file with all games
  */
-export function loadGames(){
+export function loadGames() {
   return loadJSON();
 }
 
@@ -31,26 +32,27 @@ export function loadGames(){
  * @param {*} data data to be saved in json
  */
 function saveJSON(data) {
-    fs.writeFileSync(savePath, JSON.stringify(data, null, 2), 'utf8');
-  }
+  fs.writeFileSync(savePath, JSON.stringify(data, null, 2), 'utf8');
+}
 
 
-  /**
-   * Private function, only to be called from inside Storage
-   * Loads the savegames.
-   * It makes sure it's in an array type
-   * @returns the savegames
-   */
+/**
+ * Private function, only to be called from inside Storage
+ * Loads the savegames.
+ * It makes sure it's in an array type
+ * @returns the savegames
+ */
 function loadJSON() {
-    try {
+  try {
     let fileContent = fs.readFileSync(savePath, 'utf8');
     let data = fileContent ? JSON.parse(fileContent) : []; //If filecontent is empty, initialze as [], otherwise use the parse
+    console.log(data);
     return Array.isArray(data) ? data : []; // Safeguard to ensure is array. If the data is in array format, return the data, otherwise returns empty array
-    } catch (err) {
+  } catch (err) {
     //  console.error("Could not parse JSON. Initializing empty data.");
-      return {};
-    }
+    return [];
   }
+}
 
 
 

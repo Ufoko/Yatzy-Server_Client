@@ -34,12 +34,13 @@ app.get('/dice', async (request, response) => {
 app.get('/gamestate', async (request, response) => {
     // let id = request.session.id;
     let id = request.session.playerId;
+    let name = request.session.playerName;
     console.log(id)
     if (id == undefined) {
         request.session.playerId = indexCounter;
         indexCounter++;
         id = request.session.playerId;
-        gameStates[id] = new GameState();
+        gameStates[id] = new GameState(name);
     }
     console.log(id)
     response.send(gameStates[id].gameState());

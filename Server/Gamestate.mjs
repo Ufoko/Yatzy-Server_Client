@@ -1,3 +1,4 @@
+import { saveGame } from "./Storage.mjs";
 import { chanceScore, fourOfAKindScore, fullHouseScore, largeStraightScore, onePairScore, smallStraightScore, threeOfAKindScore, twoPairScore, upperSectionScore, yatzyScore } from "./YatzyResultCalculators.mjs"
 
 
@@ -48,8 +49,9 @@ export class GameState {
             }
         }
 
-        if (this.turnCounter == 15) {
+        if (this.turnCounter == 16) {
             this.finished = true;
+            saveGame(this.getSaveData(totalScore));
         }
         return { turnNr: this.turnCounter, rollsleft: 3 - this.rollCount, result: { list: this.results, totalScore: totalScore }, sumAndBonus: { sum: this.sum(), bonus: this.bonus() }, finished: this.finished };
     }
@@ -57,12 +59,14 @@ export class GameState {
     newturn() {
         this.rollCount = 0;
         this.turnCounter++;
-        if (this.turnCounter == 16) {
-            this.finished = true;
-        } else {
+        if (!this.finished) {
             this.dice.forEach(die => die.hold = false);
             this.rollDice();
         }
+    }
+
+    getSaveData(totalScore) {
+        return {playerName : this.name, results : this.results, totalScore : totalScore}
     }
 
     rollDice() {

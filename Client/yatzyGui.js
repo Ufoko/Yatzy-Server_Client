@@ -3,7 +3,7 @@
 import { getDice, getGamestate, postRoll, postLockDice, postChoosePoint } from "./clientservercommunicationyatzycom.js";
 
 /* Gemmer nogle elementer, som vi skal bruge i løbet at spillet*/
-const turnHeader = document.querySelector("h2");
+const turnHeader = document.querySelector("#turn-indicator");
 
 const rollButton = document.querySelector("#roll")    /* Får fat i "Roll Again" Knappen*/
 rollButton.onclick = () => rollTheDice()
