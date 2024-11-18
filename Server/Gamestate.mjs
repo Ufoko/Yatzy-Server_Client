@@ -6,7 +6,7 @@ export let gameStates = [];
 export class GameState {
     constructor(playerName) {
         this.name = playerName;
-        this.turnCounter = 0;
+        this.turnCounter = 1;
         this.finished = false;
         this.rollCount = 0;
 
