@@ -11,6 +11,9 @@ rollButton.onclick = () => rollTheDice()
 const roundButton = document.querySelector("#next-round")    /* Får fat i "Ny runde" Knappen*/
 // roundButton.onclick = () => newTurn()
 
+ const okButton = document.querySelector("#ok")
+ okButton.onclick = () => window.location.href = "http://localhost:11111";
+
 const combinationDiv = document.getElementById('combinations')
 
 let nameIndex = new Map();
