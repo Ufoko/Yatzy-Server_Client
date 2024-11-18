@@ -4,12 +4,15 @@ const app = express();
 import { gameStates, GameState } from './Gamestate.mjs';
 import sessions from 'express-session';
 import path from 'path';
+import { renderFile } from 'pug';
+import { join } from 'path';
 import { fileURLToPath } from 'url';
-import { loadGames } from './Storage.mjs';
 
 app.use(json());
 app.use(cors());
 app.use(sessions({ secret: 'hemmelig', saveUninitialized: true, cookie: { maxAge: 1000 * 60 * 20 }, resave: false }));
+app.set('view engine', 'pug');
+app.set("views", __dirname + "/views");
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -56,11 +59,26 @@ app.post('/choosePoint', async (request, response) => {
     gameStates[id].choosePoint(name);
     response.sendStatus(201);
 });
-
-app.get('/savedGames', async (request, response) => {
-    let id = request.session.playerId;
-    response.send(loadGames());
+app.post('/frontpage', async (request, response) => {
+    
 });
+function loadFrontPage(){
+    let games = [];
+
+    games.push({'name': Thor, 'score': 23})
+    games.push({'name': Bo, 'score': 44})
+    games.push({'name': Carl, 'score': 43})
+    games.push({'name': Thor, 'score': 2})
+
+
+for (const game of getSaveGames) { 
+   // games.push({'name': game.name, 'score': game.gamestate().totalScore})
+}
+
+
+console.log(renderFile(join(__dirname, '/mops.pug'), {games}));
+}
+
 
 const portNr = 11111;
 app.listen(portNr, () => {
