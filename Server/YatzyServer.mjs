@@ -7,20 +7,24 @@ import path from 'path';
 import { renderFile } from 'pug';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
-
-app.use(json());
-app.use(cors());
-app.use(sessions({ secret: 'hemmelig', saveUninitialized: true, cookie: { maxAge: 1000 * 60 * 20 }, resave: false }));
-app.set('view engine', 'pug');
-app.set("views", __dirname + "/views");
+import {loadGames} from '../Server/Storage.js'
 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(json());
+app.use(cors());
+app.use(sessions({ secret: 'hemmelig', saveUninitialized: true, cookie: { maxAge: 1000 * 60 * 20 }, resave: false }));
+app.use(express.static(__dirname + '/../Client'));
+app.set('view engine', 'pug');
+app.set("views", __dirname + "/views");
+
+
+
 let indexCounter = 0;
 
-app.use(express.static(__dirname + '/../Client'));
+
 
 app.get('/dice', async (request, response) => {
     let id = request.session.playerId;
@@ -62,17 +66,21 @@ app.post('/choosePoint', async (request, response) => {
 app.post('/frontpage', async (request, response) => {
     
 });
-function loadFrontPage(){
+
+createFrontPage();
+
+function createFrontPage(){
+    console.log("TESTER")
     let games = [];
 
-    games.push({'name': Thor, 'score': 23})
-    games.push({'name': Bo, 'score': 44})
-    games.push({'name': Carl, 'score': 43})
-    games.push({'name': Thor, 'score': 2})
+    games.push({'name': "Thor", 'score': 23})
+    games.push({'name': "Bo", 'score': 44})
+    games.push({'name': "Carl", 'score': 43})
+    games.push({'name': "Thor", 'score': 2})
 
 
-for (const game of getSaveGames) { 
-   // games.push({'name': game.name, 'score': game.gamestate().totalScore})
+for (const game of loadGames()) { 
+    games.push({'name': game.name, 'score': game.gamestate().totalScore})
 }
 
 
