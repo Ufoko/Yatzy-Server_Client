@@ -14,7 +14,7 @@ const roundButton = document.querySelector("#next-round")    /* Får fat i "Ny r
  const okButton = document.querySelector("#ok")
  okButton.onclick = () => window.location.href = "http://localhost:11111";
 
-const combinationDiv = document.getElementById('combinations')
+const combinationDiv = document.querySelector('#combinations')
 
 let nameIndex = new Map();
 let index;

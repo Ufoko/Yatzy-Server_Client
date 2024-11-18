@@ -14,8 +14,9 @@ script.
         return await respons.text();
     }
 
-   async function clickfunction(name) {
+   async function clickfunction() {
         try {
+             let name = document.querySelector("#SEJFELT").value;
              await post("http://localhost:11111/loadGame", { name: name });
              window.location.href = "http://localhost:11111/game";
         } catch (e) {
@@ -28,7 +29,7 @@ html
         title Thor
     body
         p Velkomen til Yatzy:
-        button(onclick="clickfunction('din mor')") Click Me
+        button(onclick="clickfunction()") Click Me
         input#SEJFELT(type="text", name="")
         p Scoreboard: 
         table(border='1')

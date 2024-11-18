@@ -21,7 +21,7 @@ games.push({ 'name': "Thor", 'score': 2 })
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.set('views', path.join(__dirname, '/views'));
-console.log(renderFile(path.join(__dirname, '/views/mops.pug'), { games }));
+// console.log(renderFile(path.join(__dirname, '/views/mops.pug'), { games }));
 
 app.use(json());
 app.use(cors());
@@ -38,15 +38,12 @@ let indexCounter = 0;
 
 app.get('/dice', async (request, response) => {
     let id = request.session.playerId;
-    console.log(id)
     response.send({ dice: gameStates[id].dice, rollsLeft: 3 - gameStates[id].rollCount });
 });
 app.get('/gamestate', async (request, response) => {
     // let id = request.session.id;
     let id = request.session.playerId;
     let name = request.session.playerName;
-    console.log(name);
-    console.log(id)
     if (id == undefined) {
         request.session.playerId = indexCounter;
         indexCounter++;
@@ -58,7 +55,7 @@ app.get('/gamestate', async (request, response) => {
 });
 app.post('/roll', async (request, response) => {
     let id = request.session.playerId;
-    console.info('Client nr ' + id + " rolled")
+    // console.info('Client nr ' + id + " rolled")
     gameStates[id].rollDice();
     response.sendStatus(201);
 });
@@ -70,19 +67,19 @@ app.post('/lockDice', async (request, response) => {
 });
 app.post('/choosePoint', async (request, response) => {
     let id = request.session.playerId;
-    console.info('Client nr ' + id + " chose point")
+    // console.info('Client nr ' + id + " chose point")
     const { name } = request.body;
     gameStates[id].choosePoint(name);
     response.sendStatus(201);
 });
 
 app.get('/game', async (request, response) =>{
-    console.log(__dirname + '\\..\\Client\\yatzy.html')
     response.sendFile(path.resolve( __dirname + "\\..\\Client\\yatzy.html"))
 })
 
 app.post('/loadGame', async (request, response) => {
     const { name } = request.body;
+    console.log(name)
     request.session.playerName = name;
     response.sendStatus(201);
 });
