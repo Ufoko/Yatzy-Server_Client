@@ -1,0 +1,16 @@
+decotype html
+html
+    head
+        title Thor
+        script(src='users.js')
+    body    
+        p
+            |Users er: 
+            table(border = '1')
+                - 
+                each user in games
+                    tr 
+                        td #{user.navn}
+                        td #{user.score}
+                    
+        

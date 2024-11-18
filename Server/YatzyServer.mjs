@@ -5,7 +5,7 @@ import { gameStates, GameState } from './Gamestate.mjs';
 import sessions from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import {loadGames} from 'Storage'
+import {loadGames} from 'Storage.js'
 
 app.use(json());
 app.use(cors());
