@@ -1,1 +1,8 @@
 node_modules
+.idea/compiler.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/Yatzy-Server_Client.iml
