@@ -78,15 +78,13 @@ app.post('/choosePoint', async (request, response) => {
 
 app.get('/game', async (request, response) =>{
     console.log(__dirname + '\\..\\Client\\yatzy.html')
-    // let path = __dirname.slice(0, __dirname.length - 6 + "Client\\yatzy.html")
-    // console.log(path)
     response.sendFile(path.resolve( __dirname + "\\..\\Client\\yatzy.html"))
 })
 
 app.post('/loadGame', async (request, response) => {
     const { name } = request.body;
     request.session.playerName = name;
-    response.redirect(301, '/game');
+    response.sendStatus(201);
 });
 
 app.get('/', async (request, response) => {
