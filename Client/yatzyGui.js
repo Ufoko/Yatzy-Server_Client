@@ -20,7 +20,7 @@ for (index = 1; index <= 6; index++) {
 }
 nameIndex.set(index++, 'onePair')
 nameIndex.set(index++, 'twoPair')
-nameIndex.set(index++, 'threeOfAKinde')
+nameIndex.set(index++, 'threeOfAKind')
 nameIndex.set(index++, 'fourOfAkind')
 nameIndex.set(index++, 'fullHouseScore')
 nameIndex.set(index++, 'smallStraightScore')
@@ -114,27 +114,17 @@ async function updateGamestate() {
     let totalScore = gamestate.result.totalScore;
     let sum = gamestate.sumAndBonus.sum;
     let bonus = gamestate.sumAndBonus.bonus;
+    let rollsleft = gamestate.rollsleft;
+    setRollsLeft(rollsleft);
     updateResults(resultList, sum, bonus);
-    assignOnClick()
+    assignOnClick();
     updateTotalScore(totalScore);
+    setDice();
     let finished = gamestate.finished;
 }
 
 function updateTotalScore(totalScore) {
     document.querySelector("#total").innerHTML = totalScore;
-}
-
-/*
-Opdatere "rul tilbage" counteren, ved at hente rul tilbage fra gamestate.
-Hvis der ikke er flere rul tilbage, så låses knappen
-*/
-function updateCount() {
-    let count = getNextCount();
-    if (count == 1) {
-        rollButton.disabled = true;
-    }
-    let rollsLeft = document.querySelector("#rolls-left")
-    rollsLeft.innerHTML = count - 1;
 }
 
 /* 
@@ -160,12 +150,21 @@ function holdDieGUI(number) {
 }
 
 async function setDice() {
-    let dieArray = await getDice()
-    for (let i = 0; i < dieArray.length; i++) {
-        if (!dieArray[i].hold) {
-            let dieString = '<img id="die' + i + '" class="die" src="img\\dice-' + dieArray[i].value + '.svg" alt="dice' + (dieArray[i].value + 1) + '"></img>'
+    let diceinformation = await getDice()
+    console.log(diceinformation);
+    let diceArray = diceinformation.dice;
+    let rollsleft = diceinformation.rollsLeft;
+    for (let i = 0; i < diceArray.length; i++) {
+        if (!diceArray[i].hold) {
+            let dieString = '<img id="die' + i + '" class="die" src="img\\dice-' + diceArray[i].value + '.svg" alt="dice' + (diceArray[i].value + 1) + '"></img>'
             let dieImage = document.querySelector("#die" + i)
-            dieImage.outerHTML = dieString
+            dieImage.outerHTML = dieString;
         }
     }
+    setRollsLeft(rollsleft);
+    setOnClick();
+}
+
+function setRollsLeft(rollsleft) {
+    document.querySelector("#rolls-left").innerHTML = rollsleft;
 }

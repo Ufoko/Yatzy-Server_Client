@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/../Client'));
 app.get('/dice', async (request, response) => {
     let id = request.session.playerId;
     console.log(id)
-    response.send(gameStates[id].dice);
+    response.send({dice : gameStates[id].dice, rollsLeft : 3 - gameStates[id].rollCount});
 });
 app.get('/gamestate', async (request, response) => {
     // let id = request.session.id;
