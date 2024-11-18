@@ -121,7 +121,12 @@ async function updateGamestate() {
     updateTotalScore(totalScore);
     setDice();
     let finished = gamestate.finished;
-    if (finished) document.querySelector("#Finish-Screen").showModal();
+    if (finished) {
+        document.querySelector("#Finish-Screen").showModal();
+        let gameInfo = "";
+        gameInfo += `Totalscore: ${totalScore}`;
+        document.querySelector("#info").innerHTML = gameInfo;
+    }
 }
 
 function updateTotalScore(totalScore) {
