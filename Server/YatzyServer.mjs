@@ -50,7 +50,7 @@ app.get('/gamestate', async (request, response) => {
         id = request.session.playerId;
         gameStates[id] = new GameState(name);
     }
-    console.log(id)
+    // console.log(id)
     response.send(gameStates[id].gameState());
 });
 app.post('/roll', async (request, response) => {

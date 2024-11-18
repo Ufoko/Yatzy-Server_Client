@@ -57,6 +57,7 @@ export function smallStraightScore(dice) {
     return () => checkInARow(dice, 4) ? 15 : 0
 }
 
+//todo
 export function checkInARow(diceArray, inARow) {
     let straightPossible = false
     let sortedDice = Array.from(new Set(diceArray)).sort((a, b) => a - b)

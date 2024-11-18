@@ -1,7 +1,7 @@
 let clientId = 1;
 
 async function get(url) {
-    const respons = await fetch('http://localhost:11111' + url, {
+    const respons = await fetch('http://' + window.location.hostname +':11111' + url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     });
@@ -11,7 +11,7 @@ async function get(url) {
 }
 
 async function post(url, object) {
-    const respons = await fetch('http://localhost:11111' + url, {
+    const respons = await fetch('http://' + window.location.hostname +':11111' + url, {
         method: 'POST',
         body: JSON.stringify(object),
         headers: { 'Content-Type': 'application/json' }

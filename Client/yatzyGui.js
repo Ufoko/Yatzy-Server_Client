@@ -12,7 +12,7 @@ const roundButton = document.querySelector("#next-round")    /* Får fat i "Ny r
 // roundButton.onclick = () => newTurn()
 
  const okButton = document.querySelector("#ok")
- okButton.onclick = () => window.location.href = "http://localhost:11111";
+ okButton.onclick = () => window.location.href = "http://" + window.location.hostname + ":11111";
 
 const combinationDiv = document.querySelector('#combinations')
 

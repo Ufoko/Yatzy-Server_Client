@@ -79,5 +79,491 @@
       }
     },
     "totalScore": 52
+  },
+  {
+    "playerName": "Thor",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 0
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 2
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 0
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 4
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 0
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 6
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 2
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 0
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 0
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 0
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 21
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 0
+      }
+    },
+    "totalScore": 35
+  },
+  {
+    "playerName": "Thor",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 0
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 2
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 0
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 4
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 0
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 6
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 2
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 0
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 0
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 0
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 21
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 0
+      }
+    },
+    "totalScore": 35
+  },
+  {
+    "playerName": "Thor",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 0
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 2
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 0
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 4
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 0
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 6
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 2
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 0
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 0
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 0
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 21
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 0
+      }
+    },
+    "totalScore": 35
+  },
+  {
+    "playerName": "Thor",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 0
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 2
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 0
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 4
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 0
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 6
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 2
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 0
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 0
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 0
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 21
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 0
+      }
+    },
+    "totalScore": 35
+  },
+  {
+    "playerName": "Frække My",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 3
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 4
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 3
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 0
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 20
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 6
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 10
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 22
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 18
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 24
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 22
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 15
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 50
+      }
+    },
+    "totalScore": 17
+  },
+  {
+    "playerName": "Johan",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 1
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 8
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 12
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 12
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 5
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 12
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 12
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 16
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 15
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 28
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 25
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 50
+      }
+    },
+    "totalScore": 8271
   }
 ]

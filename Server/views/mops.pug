@@ -17,8 +17,8 @@ script.
    async function clickfunction() {
         try {
              let name = document.querySelector("#SEJFELT").value;
-             await post("http://localhost:11111/loadGame", { name: name });
-             window.location.href = "http://localhost:11111/game";
+             await post("http://" + window.location.hostname + ":11111/loadGame", { name: name });
+             window.location.href = "http://" + window.location.hostname +":11111/game";
         } catch (e) {
             console.error("Error:", e);
         }
