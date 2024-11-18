@@ -5,7 +5,7 @@ import { gameStates, GameState } from './Gamestate.mjs';
 import sessions from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+import {loadGames} from 'Storage'
 
 app.use(json());
 app.use(cors());
@@ -55,6 +55,11 @@ app.post('/choosePoint', async (request, response) => {
     const { name } = request.body;
     gameStates[id].choosePoint(name);
     response.sendStatus(201);
+});
+
+app.get('/savedGames', async (request, response) => {
+    let id = request.session.playerId;
+    response.send(loadGames);
 });
 
 const portNr = 11111;
