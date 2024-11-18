@@ -53,7 +53,7 @@ app.post('/roll', async (request, response) => {
 app.post('/lockDice', async (request, response) => {
     let id = request.session.playerId;
     const { number } = request.body;
-    gameStates[id].diceHoldChange(number)
+    gameStates[id].diceHoldChange(number);
     response.sendStatus(201);
 });
 app.post('/choosePoint', async (request, response) => {
