@@ -69,14 +69,4 @@ export async function postChoosePoint(name) {
     }
 }
 
-export async function getSaveGames(){
-   let savedGames;
-    try{
-        savedGames = await get("/savedGames")
-    }catch (fejl) {
-        console.log(fejl);
-    }
-    return savedGames;
-}
-
 
