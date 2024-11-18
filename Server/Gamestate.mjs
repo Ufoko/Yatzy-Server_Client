@@ -15,6 +15,7 @@ export class GameState {
         for (let index = 0; index < 5; index++) {
             this.dice[index] = new die()
         }
+        this.rollDice();
 
         //Resultlisten
         this.results = {};
@@ -50,12 +51,13 @@ export class GameState {
         if (this.turnCounter == 15) {
             this.finished = true;
         }
-        return { turnNr: this.turnCounter, result: { list: this.results, totalScore: totalScore }, sumAndBonus: { sum: this.sum(), bonus: this.bonus() }, finished: this.finished };
+        return { turnNr: this.turnCounter, rollsleft: 3 - this.rollCount, result: { list: this.results, totalScore: totalScore }, sumAndBonus: { sum: this.sum(), bonus: this.bonus() }, finished: this.finished };
     }
 
     newturn() {
         this.rollCount = 0;
         this.turnCounter++;
+        this.dice.forEach(die => die.hold = false);
         this.rollDice();
     }
 
@@ -73,8 +75,10 @@ export class GameState {
     }
 
     choosePoint(name) {
-        this.newturn();
-        this.results[name].used = true;
+        if (!this.results[name].used) {
+            this.results[name].used = true;
+            this.newturn();
+        }
     }
 
     bonus() {
