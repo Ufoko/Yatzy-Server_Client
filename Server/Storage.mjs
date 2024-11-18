@@ -1,5 +1,11 @@
-let savePath = process.cwd() + "/Server/SaveFiles/Games.json"
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import fs from "fs"
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+let savePath = __dirname + "/SaveFiles/Games.json"
+
 
 
 /**
