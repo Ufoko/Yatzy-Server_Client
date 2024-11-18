@@ -85,21 +85,21 @@ app.post('/loadGame', async (request, response) => {
 });
 
 app.get('/', async (request, response) => {
-    response.render('mops', { games: games });
+    response.render('mops', { games: leaderboardStatus() });
 });
 
 
-function createFrontPage() {
+function leaderboardStatus() {
     let games = [];
 
     games.push({ 'name': "Thor", 'score': 23 })
     games.push({ 'name': "Bo", 'score': 44 })
     games.push({ 'name': "Carl", 'score': 43 })
     games.push({ 'name': "Thor", 'score': 2 })
-
+    console.log(loadGames())
     try {
         for (const game of loadGames()) {
-            games.push({ 'name': game.name, 'score': game.gamestate().totalScore })
+            games.push({ 'name': game.playerName, 'score': game.totalScore })
         }
     }
     catch (TypeError) {
@@ -107,7 +107,7 @@ function createFrontPage() {
         console.log("Skyd dig selv")
     }
 
-
+        games.sort((d, b) => b.score - d.score)
     return games;
 }
 
