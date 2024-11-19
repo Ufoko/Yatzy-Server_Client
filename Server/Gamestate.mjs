@@ -51,7 +51,7 @@ export class GameState {
             }
         }
 
-        if (this.turnCounter == 16) {
+        if (this.turnCounter == 16 && !this.finished) {
             this.finished = true;
             saveGame(this.getSaveData(totalScore));
         }

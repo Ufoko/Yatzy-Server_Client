@@ -8,8 +8,7 @@ import { renderFile } from 'pug';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import { loadGames } from './Storage.mjs'
-import { getStatistics } from './statistics.mjs';
-
+import { getStatistics, getStatisticsKeys } from './statistics.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,11 +22,7 @@ app.use(express.static(__dirname + '/../Client'));
 app.set('view engine', 'pug');
 app.set("views", __dirname + "/views");
 
-
-
 let indexCounter = 0;
-
-
 
 app.get('/dice', async (request, response) => {
     let id = request.session.playerId;
@@ -42,7 +37,7 @@ app.get('/gamestate', async (request, response) => {
         id = request.session.playerId;
         gameStates[id] = new GameState(name);
     }
-    //Checker om gamet er færdig, og clearer informationen om spilleren.
+    //Checker om gamet er færdig, og clearer id'et, så de kan starte et nyt game.
     if (gameStates[id].gameState().finished) {
         request.session.playerId = undefined;
     }
@@ -82,7 +77,7 @@ app.get('/:playerName/Statistics', async (request, response) => {
 });
 
 app.get('/', async (request, response) => {
-    response.render('mops', { games: leaderboardStatus(), statistics: ['Genemsnitlige Point', "Højeste Score"] });
+    response.render('mops', { games: leaderboardStatus(), statistics: getStatisticsKeys() });
 });
 
 

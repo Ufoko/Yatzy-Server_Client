@@ -14,5 +14,16 @@ function highScore(name) {
 }
 
 export function getStatistics(name) {
-    return {"name" : name, "averagePoints" : averagePoints(name), "highScore" : highScore(name)}
+    return {"averagePoints" : averagePoints(name), "highestScore" : highScore(name)}
+}
+
+export function getStatisticsKeys() {
+    return [new Statistic("Genemsnitlige Point", "averagePoints"), new Statistic("Højeste Score", "highestScore")]
+}
+
+class Statistic {
+    constructor(name, id) {
+        this.name = name;
+        this.id = id;
+    }
 }
