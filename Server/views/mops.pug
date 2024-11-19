@@ -2,21 +2,28 @@ doctype html
 
 script.
    async function post(url, objekt) {
-        const respons = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify(objekt),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        let options = {
+            method : "POST",
+            body : JSON.stringify(objekt),
+            headers : {'Content-Type': 'application/json'}
+        }
+        const respons = await fetch(url, options);
         if (respons.status !== 201) // Created
             throw new Error(respons.status);
         return await respons.text();
     }
 
-   async function clickfunction() {
+    async function get(url, objekt) {
+        let options = {method : "GET"};
+        const respons = await fetch(url, options);
+        if (respons.status !== 200) // Created
+            throw new Error(respons.status);
+        return await respons.json();
+    }
+
+    async function startGame () {
         try {
-             let name = document.querySelector("#SEJFELT").value;
+             let name = document.querySelector("#PlayerName").value;
              await post("http://" + window.location.hostname + ":11111/loadGame", { name: name });
              window.location.href = "http://" + window.location.hostname +":11111/game";
         } catch (e) {
@@ -24,16 +31,59 @@ script.
         }
     }
 
+   async function statUpdate () {
+        try {
+             let name = document.querySelector("#StatisticsName").value;
+             let data = await get("http://" + window.location.hostname + ":11111/" + name + "/Statistics");
+             document.querySelector("#Genemsnitlige_Point").innerHTML = data.averagePoints;
+             document.querySelector("#Højeste_Score").innerHTML = data.highScore;
+        } catch (e) {
+            console.error("Error:", e);
+        }
+    }
+
 html
     head
-        title Thor
+        title Homepage
+        style 
+            include mops.css
     body
-        p Velkomen til Yatzy:
-        button(onclick="clickfunction()") Click Me
-        input#SEJFELT(type="text", name="")
-        p Scoreboard: 
-        table(border='1')
-            each user in games
-                tr 
-                    td #{user.name}
-                    td #{user.score}
+        H1 Velkomen til Yatzy
+        .Main
+            .Left
+                .Start-Game
+                    p Start spil:
+                    .input#StartInput
+                        input.Name#PlayerName(type="text", name="", placeholder="Navn")
+                        button.Btn#StartBtn(onclick="startGame ()") Go!
+                .Statistics
+                    p Statistikker: 
+                    .input#StatInput
+                        input.Name#StatisticsName(type="text", name="", placeholder="Navn")
+                        button.Btn#StatBtn(onclick="statUpdate()") See Stats                  
+                    table.Leaderboard
+                        thead 
+                            tr
+                                th Hvad
+                                th Hvor meget
+                        tbody
+                            each result in statistics
+                                tr 
+                                    td #{result}
+                                    td(id = result.replace(" ", "_"))
+
+            .Right
+                .Information
+                    p Scoreboard: 
+                    table.Leaderboard
+                        thead 
+                            tr
+                                th Navn 
+                                th Antal 0'er
+                                th Score
+                        tbody
+                            each user in games
+                                tr 
+                                    td #{user.name}
+                                    td #{user.zeros}
+                                    td #{user.score}

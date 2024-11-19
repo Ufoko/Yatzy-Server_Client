@@ -1,0 +1,119 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+:root {
+	--vs-primary: 29 92 255;
+    --vs-leaderboard: 44 94 61;
+}
+
+html {
+    min-height: 100%;
+    font-size: 1rem;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  line-height: 1.25rem;
+  font-size: 1rem;
+  background: rgb(46,46,46);
+  background: linear-gradient(180deg, rgba(46,46,46,1) 0%, rgba(34,34,34,1) 35%, rgba(19,19,19,1) 100%);
+  color: #aaa;
+  margin: 1.25rem;
+  height: 100%;
+  overflow: hidden;
+}
+
+.Main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1.25rem;
+}
+
+.Name {
+    width: 50%;
+    padding: 0.625rem;
+    border: 4px solid rgb(var(--vs-leaderboard));
+    border-radius: 0.625rem;
+}
+
+.Name:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.94);
+}
+
+p {
+    margin: 0;
+}
+
+.input {
+    margin-top: 1rem;
+}
+
+#StartInput {
+    margin-bottom: 5rem;
+}
+
+.Btn {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    line-height: 1.25rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid #222222;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+    background: #fff;
+    color: #222222;
+}
+
+.Btn:hover {
+    border-color: #000000;
+    background: #d7d7d7;
+}
+
+.Leaderboard {
+    margin-top: 1rem;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 25rem;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden; /*Fjerner overflowet, var de stadig firkantet rækker*/
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.45);
+}
+
+
+.Leaderboard thead tr {
+    background-color: rgb(var(--vs-leaderboard));
+    color: #ffffff;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.Leaderboard th,
+.Leaderboard td {
+    padding: .125rem 1rem;
+}
+
+.Leaderboard tbody tr {
+    border-bottom: 1px solid #dddddd;
+    color: white;
+    font-weight: 600;
+}
+
+.Leaderboard tbody tr:nth-of-type(even) {
+    background-color: #6d6d6d;
+}
+
+.Leaderboard tbody tr td:first-child {
+    text-align: left;
+}
+
+.Leaderboard tbody tr td {
+    text-align: right;
+}
+
+.Leaderboard tbody tr:last-of-type {
+    border-bottom: 0.25rem solid rgb(var(--vs-leaderboard));
+}

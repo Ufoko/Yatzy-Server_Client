@@ -1,3 +1,4 @@
+import { die, resultLine } from "./Gomponents.mjs";
 import { saveGame } from "./Storage.mjs";
 import { chanceScore, fourOfAKindScore, fullHouseScore, largeStraightScore, onePairScore, smallStraightScore, threeOfAKindScore, twoPairScore, upperSectionScore, yatzyScore } from "./YatzyResultCalculators.mjs"
 
@@ -10,6 +11,7 @@ export class GameState {
         this.turnCounter = 1;
         this.finished = false;
         this.rollCount = 0;
+        this.totalRoll;
 
         //Terninger
         this.dice = [];
@@ -57,6 +59,7 @@ export class GameState {
     }
 
     newturn() {
+        this.totalRoll += this.rollCount;
         this.rollCount = 0;
         this.turnCounter++;
         if (!this.finished) {
@@ -66,7 +69,7 @@ export class GameState {
     }
 
     getSaveData(totalScore) {
-        return {playerName : this.name, results : this.results, totalScore : totalScore}
+        return {playerName : this.name, results : this.results, totalScore : totalScore, totalRolls : this.totalRoll}
     }
 
     rollDice() {
@@ -100,27 +103,5 @@ export class GameState {
             singlesScore += (this.results[index + '-s'].used) ? this.results[index + '-s'].score : 0;
         }
         return singlesScore;
-    }
-}
-
-class resultLine {
-    constructor(name, calculator) {
-        this.name = name;
-        this.used = false;
-        this.score = 0;
-        this.calculater = calculator;
-    }
-}
-
-class die {
-    constructor() {
-        this.hold = false;
-        this.value = this.roll();
-    }
-
-    roll() {
-        if (this.hold != true) {
-            return this.value = Math.floor(Math.random() * 6 + 1)
-        } else return this.value;
     }
 }

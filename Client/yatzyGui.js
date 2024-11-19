@@ -11,8 +11,8 @@ rollButton.onclick = () => rollTheDice()
 const roundButton = document.querySelector("#next-round")    /* Får fat i "Ny runde" Knappen*/
 // roundButton.onclick = () => newTurn()
 
- const okButton = document.querySelector("#ok")
- okButton.onclick = () => window.location.href = "http://" + window.location.hostname + ":11111";
+const okButton = document.querySelector("#ok")
+okButton.onclick = () => window.location.href = "http://" + window.location.hostname + ":11111";
 
 const combinationDiv = document.querySelector('#combinations')
 
@@ -118,17 +118,18 @@ async function updateGamestate() {
     let sum = gamestate.sumAndBonus.sum;
     let bonus = gamestate.sumAndBonus.bonus;
     let rollsleft = gamestate.rollsleft;
-    setRollsLeft(rollsleft);
-    updateResults(resultList, sum, bonus);
-    assignOnClick();
-    updateTotalScore(totalScore);
-    setDice();
     let finished = gamestate.finished;
     if (finished) {
         document.querySelector("#Finish-Screen").showModal();
         let gameInfo = "";
         gameInfo += `Totalscore: ${totalScore}`;
         document.querySelector("#info").innerHTML = gameInfo;
+    } else {
+        setRollsLeft(rollsleft);
+        updateResults(resultList, sum, bonus);
+        assignOnClick();
+        updateTotalScore(totalScore);
+        setDice();
     }
 }
 
