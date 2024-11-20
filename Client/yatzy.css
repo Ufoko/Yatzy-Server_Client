@@ -171,8 +171,9 @@ img {
 .result-button-clicked {
   height: 4vh;
   width: 10vb;
-  overflow: hidden;
-  background-color: rgb(44, 94, 61);
+  border-radius: 5px;
+  border-width: 0;
+  background-color: rgb(216, 16, 16);
   
 }
 
