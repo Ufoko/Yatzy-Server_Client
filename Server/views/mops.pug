@@ -35,7 +35,6 @@ script.
         try {
              let name = document.querySelector("#StatisticsName").value;
              let data = await get("http://" + window.location.hostname + ":11111/" + name + "/Statistics");
-             console.log(data)
              for (const statistic of data) {
                 document.querySelector("#" + statistic.id).innerHTML = statistic.value;
              }
