@@ -80,12 +80,15 @@ html
                         table.Leaderboard#Score
                             thead 
                                 tr
+                                    th Nr
                                     th Navn 
                                     th Antal 0'er
                                     th Score
                             tbody
+                                - var i = 1;
                                 each user in games
                                     tr 
+                                        td #{i++}.
                                         td #{user.name}
                                         td #{user.zeros}
                                         td #{user.score}
