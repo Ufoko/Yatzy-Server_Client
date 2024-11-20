@@ -78,6 +78,11 @@ p {
     width: 100%;
 }
 
+.TableDiv {
+    overflow-y: auto;
+    height: 26rem;
+}
+
 .Leaderboard {
     margin-top: 1rem;
     border-collapse: collapse;
@@ -94,7 +99,10 @@ p {
     color: #ffffff;
     text-align: left;
     font-size: 1.2em;
+    position: sticky; 
+    top: 0;
 }
+
 
 .Leaderboard th,
 .Leaderboard td {
