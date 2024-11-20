@@ -6,3 +6,4 @@ node_modules
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/Yatzy-Server_Client.iml
+Server/SaveFiles/Games.json

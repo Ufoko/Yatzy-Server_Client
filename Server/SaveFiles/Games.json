@@ -1305,6 +1305,7 @@
     "totalRolls": null
   },
   {
+    "playerName": "spiller34",
     "results": {
       "1-s": {
         "name": "1-s",
@@ -1319,17 +1320,17 @@
       "3-s": {
         "name": "3-s",
         "used": true,
-        "score": 6
+        "score": 3
       },
       "4-s": {
         "name": "4-s",
         "used": true,
-        "score": 0
+        "score": 4
       },
       "5-s": {
         "name": "5-s",
         "used": true,
-        "score": 0
+        "score": 15
       },
       "6-s": {
         "name": "6-s",
@@ -1339,12 +1340,12 @@
       "onePair": {
         "name": "onePair",
         "used": true,
-        "score": 12
+        "score": 4
       },
       "twoPair": {
         "name": "twoPair",
         "used": true,
-        "score": 0
+        "score": 16
       },
       "threeOfAKind": {
         "name": "threeOfAKinde",
@@ -1364,7 +1365,7 @@
       "smallStraightScore": {
         "name": "smallStraightScore",
         "used": true,
-        "score": 0
+        "score": 15
       },
       "largeStraightScore": {
         "name": "largeStraightScore",
@@ -1374,7 +1375,7 @@
       "chanceScore": {
         "name": "chanceScore",
         "used": true,
-        "score": 21
+        "score": 17
       },
       "yatzyScore": {
         "name": "yatzyScore",
@@ -1382,7 +1383,7 @@
         "score": 0
       }
     },
-    "totalScore": 43,
+    "totalScore": 78,
     "totalRolls": null
   }
 ]

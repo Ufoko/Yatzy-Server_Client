@@ -165,6 +165,10 @@ async function setDice() {
             let dieString = '<img id="die' + i + '" class="die" src="img\\dice-' + diceArray[i].value + '.svg" alt="dice' + (diceArray[i].value + 1) + '"></img>'
             let dieImage = document.querySelector("#die" + i)
             dieImage.outerHTML = dieString;
+        } else {
+            let dieString = '<img id="die' + i + '" class="die-clicked" src="img\\dice-' + diceArray[i].value + '.svg" alt="dice' + (diceArray[i].value + 1) + '"></img>'
+            let dieImage = document.querySelector("#die" + i)
+            dieImage.outerHTML = dieString;
         }
     }
     setRollsLeft(rollsleft);
