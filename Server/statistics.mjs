@@ -1,4 +1,7 @@
+import { Statistic } from "./Gomponents.mjs";
 import { loadGames } from "./Storage.mjs";
+
+export let statistics = [new Statistic("Genemsnitlige Point", "averagePoints", averagePoints), new Statistic("Højeste Score", "highestScore", highScore)];
 
 function averagePoints(name) {
     let gamestates = loadGames().filter(gamestate => gamestate.playerName == name);
@@ -14,16 +17,9 @@ function highScore(name) {
 }
 
 export function getStatistics(name) {
-    return {"averagePoints" : averagePoints(name), "highestScore" : highScore(name)}
+    return statistics.map(statistic => {return {"id" : statistic.id, "value" : statistic.calculator(name)}})
 }
 
 export function getStatisticsKeys() {
-    return [new Statistic("Genemsnitlige Point", "averagePoints"), new Statistic("Højeste Score", "highestScore")]
-}
-
-class Statistic {
-    constructor(name, id) {
-        this.name = name;
-        this.id = id;
-    }
+    return statistics.map(statistic => {return {"id" : statistic.id, "name" : statistic.name}});
 }

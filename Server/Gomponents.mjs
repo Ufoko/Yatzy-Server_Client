@@ -19,3 +19,11 @@ export class die {
         } else return this.value;
     }
 }
+
+export class Statistic {
+    constructor(name, id, calculator) {
+        this.name = name;
+        this.id = id;
+        this.calculator = calculator;
+    }
+}
