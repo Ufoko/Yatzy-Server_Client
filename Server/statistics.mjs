@@ -2,10 +2,17 @@ import { Statistic } from "./Gomponents.mjs";
 import { loadGames } from "./Storage.mjs";
 
 export let statistics = [
-    new Statistic("Genemsnitlige Point", "averagePoints", averagePoints), 
+    new Statistic("Antal spil", "numberOfGames", numberOfGames),
     new Statistic("Højeste Score", "highestScore", highScore),
-    new Statistic("Antal spil", "numberOfGames", numberOfGames)
+    new Statistic("Genemsnitlige Point", "averagePoints", averagePoints), 
+    new Statistic("Laveste Antal Point", "lowestScore", lowestScore)
 ];
+
+function lowestScore(name) {
+    let gamestates = loadGames().filter(gamestate => gamestate.playerName == name);
+    let lowestScore = gamestates.reduce((min, gamestate) => min = (gamestate.totalScore < min)? gamestate.totalScore : min, gamestates[0].totalScore);
+    return lowestScore;
+}
 
 function numberOfGames(name) {
     let gamestates = loadGames().filter(gamestate => gamestate.playerName == name);
