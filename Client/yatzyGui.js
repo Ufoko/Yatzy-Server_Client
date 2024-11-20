@@ -8,9 +8,6 @@ const turnHeader = document.querySelector("#turn-indicator");
 const rollButton = document.querySelector("#roll")    /* Får fat i "Roll Again" Knappen*/
 rollButton.onclick = () => rollTheDice()
 
-const roundButton = document.querySelector("#next-round")    /* Får fat i "Ny runde" Knappen*/
-// roundButton.onclick = () => newTurn()
-
 const okButton = document.querySelector("#ok")
 okButton.onclick = () => window.location.href = "http://" + window.location.hostname + ":11111";
 

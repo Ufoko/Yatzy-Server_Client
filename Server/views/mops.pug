@@ -35,9 +35,8 @@ script.
         try {
              let name = document.querySelector("#StatisticsName").value;
              let data = await get("http://" + window.location.hostname + ":11111/" + name + "/Statistics");
-             console.log(Object.keys(data))
-             for (const key of Object.keys(data)) {
-                document.querySelector("#" + key).innerHTML = data[key];
+             for (const statistic of data) {
+                document.querySelector("#" + statistic.id).innerHTML = statistic.value;
              }
         } catch (e) {
             console.error("Error:", e);

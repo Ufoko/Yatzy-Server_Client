@@ -73,7 +73,11 @@ app.post('/loadGame', async (request, response) => {
 });
 
 app.get('/:playerName/Statistics', async (request, response) => {
-    response.send(getStatistics(request.params["playerName"]));
+    try {
+        response.send(getStatistics(request.params["playerName"]));
+    } catch (error) {
+        response.sendStatus(404);
+    }
 });
 
 app.get('/', async (request, response) => {
