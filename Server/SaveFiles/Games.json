@@ -564,7 +564,7 @@
         "score": 50
       }
     },
-    "totalScore": 8271
+    "totalScore": -999999
   },
   {
     "playerName": "Mikkel",
@@ -1465,6 +1465,416 @@
       }
     },
     "totalScore": 37,
+    "totalRolls": null
+  },
+  {
+    "playerName": "Thor",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 2
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 6
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 9
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 12
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 20
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 24
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 12
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 14
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 18
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 16
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 23
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 15
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 20
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 23
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 50
+      }
+    },
+    "totalScore": 264,
+    "totalRolls": null
+  },
+  {
+    "playerName": "Peniiiiis",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 2
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 8
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 3
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 12
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 15
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 12
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 10
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 14
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 18
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 0
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 17
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 0
+      }
+    },
+    "totalScore": 111,
+    "totalRolls": null
+  },
+  {
+    "playerName": "Vil du dø kælling",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 3
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 6
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 12
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 12
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 15
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 30
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 12
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 22
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 18
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 0
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 21
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 0
+      }
+    },
+    "totalScore": 901,
+    "totalRolls": null
+  },
+  {
+    "playerName": "Giv mig 6",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 3
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 8
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 9
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 12
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 15
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 18
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 8
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 18
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 0
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 0
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 15
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 14
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 0
+      }
+    },
+    "totalScore": 170,
+    "totalRolls": null
+  },
+  {
+    "playerName": "Nate",
+    "results": {
+      "1-s": {
+        "name": "1-s",
+        "used": true,
+        "score": 2
+      },
+      "2-s": {
+        "name": "2-s",
+        "used": true,
+        "score": 2
+      },
+      "3-s": {
+        "name": "3-s",
+        "used": true,
+        "score": 6
+      },
+      "4-s": {
+        "name": "4-s",
+        "used": true,
+        "score": 12
+      },
+      "5-s": {
+        "name": "5-s",
+        "used": true,
+        "score": 15
+      },
+      "6-s": {
+        "name": "6-s",
+        "used": true,
+        "score": 24
+      },
+      "onePair": {
+        "name": "onePair",
+        "used": true,
+        "score": 12
+      },
+      "twoPair": {
+        "name": "twoPair",
+        "used": true,
+        "score": 16
+      },
+      "threeOfAKind": {
+        "name": "threeOfAKinde",
+        "used": true,
+        "score": 15
+      },
+      "fourOfAkind": {
+        "name": "fourOfAkind",
+        "used": true,
+        "score": 0
+      },
+      "fullHouseScore": {
+        "name": "fullHouseScore",
+        "used": true,
+        "score": 21
+      },
+      "smallStraightScore": {
+        "name": "smallStraightScore",
+        "used": true,
+        "score": 15
+      },
+      "largeStraightScore": {
+        "name": "largeStraightScore",
+        "used": true,
+        "score": 0
+      },
+      "chanceScore": {
+        "name": "chanceScore",
+        "used": true,
+        "score": 22
+      },
+      "yatzyScore": {
+        "name": "yatzyScore",
+        "used": true,
+        "score": 50
+      }
+    },
+    "totalScore": 212,
     "totalRolls": null
   }
 ]
