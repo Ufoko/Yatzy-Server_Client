@@ -41,8 +41,6 @@ function startGame() {
     drawCombinations()
     setOnClick()
     updateGamestate()
-    // startUp()
-    // newTurn()
 }
 
 
@@ -142,6 +140,7 @@ function updateResults(resultArray, sum, bonus) {
     for (const key in resultArray) {
         const element = resultArray[key];
         document.querySelector("#button" + indexCounter).innerHTML = element.score;
+        document.querySelector("#button" + indexCounter).className = (element.used) ? "result-button-clicked" : "result-button" ;
         indexCounter++;
     }
     document.querySelector("#buttonSum").innerHTML = sum;

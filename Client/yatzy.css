@@ -171,7 +171,9 @@ img {
 .result-button-clicked {
   height: 4vh;
   width: 10vb;
-  background-color: rgb(169, 255, 205);
+  overflow: hidden;
+  background-color: rgb(44, 94, 61);
+  
 }
 
 /*Dialog Styles*/
