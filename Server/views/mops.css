@@ -106,6 +106,9 @@ p {
     top: 0;
 }
 
+#StatInput {
+    margin-bottom: 1rem;
+}
 
 .Leaderboard th,
 .Leaderboard td {
