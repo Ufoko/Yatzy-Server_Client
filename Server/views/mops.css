@@ -83,8 +83,11 @@ p {
     height: 26rem;
 }
 
+.Information p {
+    margin-bottom: 1rem;
+}
+
 .Leaderboard {
-    margin-top: 1rem;
     border-collapse: collapse;
     font-size: 0.9em;
     font-family: sans-serif;
