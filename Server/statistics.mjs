@@ -1,7 +1,17 @@
 import { Statistic } from "./Gomponents.mjs";
 import { loadGames } from "./Storage.mjs";
 
-export let statistics = [new Statistic("Genemsnitlige Point", "averagePoints", averagePoints), new Statistic("Højeste Score", "highestScore", highScore)];
+export let statistics = [
+    new Statistic("Genemsnitlige Point", "averagePoints", averagePoints), 
+    new Statistic("Højeste Score", "highestScore", highScore),
+    new Statistic("Antal spil", "numberOfGames", numberOfGames)
+];
+
+function numberOfGames(name) {
+    let gamestates = loadGames().filter(gamestate => gamestate.playerName == name);
+    let numberOfGames = gamestates.length;
+    return numberOfGames;
+}
 
 function averagePoints(name) {
     let gamestates = loadGames().filter(gamestate => gamestate.playerName == name);
