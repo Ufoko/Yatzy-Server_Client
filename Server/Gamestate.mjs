@@ -48,9 +48,9 @@ export class GameState {
                 totalScore += resultLine.score;
             } else {
                 resultLine.score = resultLine.calculater();
-            }
-            totalScore += this.bonus();
+            } 
         }
+        totalScore += this.bonus();
 
         if (this.turnCounter == 16 && !this.finished) {
             this.finished = true;
