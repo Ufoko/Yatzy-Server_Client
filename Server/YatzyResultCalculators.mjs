@@ -57,13 +57,12 @@ export function smallStraightScore(dice) {
     return () => checkInARow(dice, 4) ? 15 : 0
 }
 
-//todo
 export function checkInARow(diceArray, inARow) {
     let straightPossible = false
-    let sortedDice = Array.from(new Set(diceArray)).sort((a, b) => a - b)
+    let sortedDice = Array.from(new Set(diceArray)).sort((a, b) => a.value - b.value)
     let consecutives = 1;
     for (let index = 1; index < sortedDice.length; index++) {
-        if (sortedDice[index] - sortedDice[index - 1] === 1) {
+        if (sortedDice[index].value - sortedDice[index - 1].value == 1) {
             consecutives++
             if (consecutives == inARow) {
                 straightPossible = true;
